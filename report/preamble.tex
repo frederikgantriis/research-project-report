@@ -1,0 +1,25 @@
+\documentclass[11pt,a4paper,parskip=half,bibliography=numbered,twocolumn]{scrartcl}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=4cm]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc} % improved output encoding (easier copy/paste in pdf)
+\usepackage{microtype} % improved linebreaks & hyphens
+\usepackage{graphicx} % Required for inserting images
+\usepackage{pgfplots}
+\usepackage{pgfplotstable}
+\usepackage{xcolor}
+\usepackage{float}
+\usepackage{enumitem} % control list spacing
+\setlist[itemize]{nosep, leftmargin=*}                
+\usepackage{hyperref}
+\usepackage{booktabs}
+\hypersetup{
+    colorlinks=false,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+}
+\newcommand{\todo}[1]{\textcolor{red}{\textbf{TODO: #1}}}
+
+\def\ap{\textit{Aalborg Portland}}
+
+\pgfplotsset{compat=1.18}
