@@ -4,25 +4,60 @@
 This project uses data given by \ap. All data is collected from the preheater tower mentioned in \autoref{sec:introduction}. This includes the following datapoints:
 
 \begin{itemize}
-    \item Feed to Oven (tons per day)
-    \item Top Pressure (mBar)
-    \item Top Temperature (Degrees)
-    \item Bottom Pressure (mBar)
-    \item Bottom Temperature (Degrees)
-    \item First Step Bottom Temperature (Degrees)
-    \item Second Step Bottom Temperature (Degrees)
-    \item Second Step Top Temperature (Degrees)
-    \item Flue Gas Fan (Power)
-    \item Flue Gas Fan (Current)
+    \item \texttt{PV1\_A\_Feed\_to\_Oven\_tons\_per\_day}:
+    \item \texttt{PV2\_A\_Bottom\_Pressure}:
+    \item \texttt{PV3\_A\_Bottom\_Temperature}:
+    \item \texttt{PV4\_A\_Top\_Pressure}:
+    \item \texttt{PV5\_A\_First\_Step\_Bottom\_Temperature}:
+    \item \texttt{PV6\_A\_Second\_Step\_Bottom\_Temperature}:
+    \item \texttt{PV7\_A\_Second\_Step\_Top\_Temperature}:
+    \item \texttt{PV8\_A\_FlueGasFan\_Power}:
+    \item \texttt{PV9\_A\_FlueGasFan\_Current}:
+    \item \texttt{month}:
+    \item \texttt{day}:
 \end{itemize}
 
-All of these data-points are then 
+All of these values were then implemented twice: Once for the A side and once for the B side of the pre-heater tower.
+
+In addition, two features were compute from the previous mentioned features:
+
+\begin{itemize}
+    \item \texttt{pressure\_diff}:
+    \item \texttt{temperature\_diff}:
+\end{itemize}
+
+These two features were added, based on expert knowledge from \ap.
 
 \section{Descriptive Statistics}
 
-\todo{Include a section with all the descriptive statistics from all different features}
+Before pre-processing and feature engineering, an explorative data analysis is needed to get a sense of which features would be deemed useful for the model, and how these features should be processed.
 
-\todo{Include section concerning Pearson and Spearman correlation, both overall and for each step}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{report/img/descriptive_stats.png}
+    \caption{Overview of Mean and std deviation of each feature}
+    \label{fig:descriptive_stats}
+\end{figure}
+
+\autoref{fig:descriptive_stats} gives a quick overview of the mean values of each feature. This illustration shows that, while temperature readings are quite high, all other features generally deviate in a smaller range. However, due to the high temperature readings, scaling the input would be critical to enable good results from the models.
+
+\subsection{Correlation Analysis}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{report/img/pearson_correlation_matrix.png}
+    \caption{Pearson Correlation Matrix}
+    \label{fig:pearson}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{report/img/spearman_correlation_matrix.png}
+    \caption{Spearman Correlation Matrix}
+    \label{fig:spearman}
+\end{figure}
+
+\todo{Write description of correlation analysis}
 
 \subsection{Pre-processing and Feature Engineering}
 
