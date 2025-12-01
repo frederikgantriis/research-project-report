@@ -8,8 +8,8 @@ The pipeline consist of the following steps:
     \item \textbf{Preparation}: The data given is merged and have an initial cleaning. The goal of this step, is to prepare the data for visualisations and transformations in later steps.
     \item \textbf{Visualisation}: This steps has the sole purpose of analysing and visualising the raw data. This includes making a correlation analysis, generating descriptive statistics, and plotting the initial data.
     \item \textbf{Transformation}: Here, the data is prepared for training and testing of all the different models. This includes, filling missing values, standardisation and splitting the dataset into the sections train and test. 
-    \item \textbf{Training}: In this step, the models are trained and validated.  Each fold is measured with \textit{Root Mean Squared Error (RMSE)} where the results are visualised in a graph.
-    \item \textbf{Evaluation}: The last step in the pipeline, is concerned testing the models, following by visualisation and evaluation of the results. For evaluation, both \textit{Root Mean Squared Error (RMSE)}, \textit{Mean Absolute Error (MAE)} and \textit{R2-score} is calculated to get statistics of how well the models perform. Furthermore, the results a visualised alongside the true values, to get a visual understanding of how the model performs in critical moments such as blockages.
+    \item \textbf{Training}: In this step, the models are trained and validated. Each fold is measured with \textit{Root Mean Squared Error (RMSE)}.
+    \item \textbf{Evaluation}: The last step in the pipeline, is concerned testing the models, following by visualisation and evaluation of the results.
 \end{enumerate}
 
 The structure of the pipeline enabled easy development and testing of different models. Consequently, DVC isolates all parameters into a single file along with an option to queue multiple experiments. As a results, hyper-parameter tuning was easy to structure and allowed experiments to be easily reproduce-able at any given point.

@@ -1,4 +1,3 @@
-\documentclass[11pt,a4paper,parskip=half,bibliography=numbered,twocolumn]{scrartcl}
 \usepackage[left=2cm,right=2cm,top=2cm,bottom=4cm]{geometry}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc} % improved output encoding (easier copy/paste in pdf)
@@ -10,16 +9,22 @@
 \usepackage{float}
 \usepackage{enumitem} % control list spacing
 \setlist[itemize]{nosep, leftmargin=*}                
-\usepackage{hyperref}
 \usepackage{booktabs}
+\newcommand{\todo}[1]{\textcolor{red}{\textbf{TODO: #1}}}
+
+\def\ap{\textit{Aalborg Portland }}
+\def\pdm{predictive maintenance }
+
+\usepackage[backend=biber,style=numeric, citestyle=authoryear-ibid, url=true,doi=true]{biblatex}
+
+\addbibresource{bib.bib}
+
+\pgfplotsset{compat=1.18}
+
+\usepackage{hyperref}
 \hypersetup{
     colorlinks=false,
     linkcolor=blue,
     filecolor=magenta,      
     urlcolor=cyan,
 }
-\newcommand{\todo}[1]{\textcolor{red}{\textbf{TODO: #1}}}
-
-\def\ap{\textit{Aalborg Portland}}
-
-\pgfplotsset{compat=1.18}

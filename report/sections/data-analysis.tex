@@ -3,15 +3,20 @@
 
 This project uses data given by \ap. All data is collected from the preheater tower mentioned in \autoref{sec:introduction}. This includes the following datapoints:
 
-\todo{Insert all features from the dataset}
-
 \begin{itemize}
-    \item Some feature
-    \item Some feature
-    \item Some feature
-    \item Some feature
-    \item Some feature
+    \item Feed to Oven (tons per day)
+    \item Top Pressure (mBar)
+    \item Top Temperature (Degrees)
+    \item Bottom Pressure (mBar)
+    \item Bottom Temperature (Degrees)
+    \item First Step Bottom Temperature (Degrees)
+    \item Second Step Bottom Temperature (Degrees)
+    \item Second Step Top Temperature (Degrees)
+    \item Flue Gas Fan (Power)
+    \item Flue Gas Fan (Current)
 \end{itemize}
+
+All of these data-points are then 
 
 \section{Descriptive Statistics}
 
@@ -21,12 +26,12 @@ This project uses data given by \ap. All data is collected from the preheater to
 
 \subsection{Pre-processing and Feature Engineering}
 
+\todo{Explain the steps of simpleimputer and so on}
+
 \subsection{Train-Validation-Test Splitting Strategy}
 
 In regards to splitting the dataset into a train, validation and test dataset, the main focus has been to keep the order of the data throughout all processing. The reason being, that time-series data may include patterns present over a given time-period that models are able to learn. Therefore, the initial splitting only concerned splitting the dataset into train and test. The size of the training dataset was determined using try-and-test experimentation to choose an optimal size.
 
-Afterwards, the training dataset are split into different folds to enable cross-validation. To achieve this, the \textit{TimeSeriesSplit} method is used, since this splits a given time-sensitive dataset into a specified amount of folds, each containing a continuous sequence. 
-
-This means, that the training dataset fetched from the transformation step, is split using \textit{TimeSeriesSplit} \footnote{\url{https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.TimeSeriesSplit.html}}. The method splits the data into equal portions, before being trained on the model using cross-validation. The reason for using the \textit{TimeSeriesSplit}, is to ensure that the data isn't shuffled, since all entries in a given split to be a continuous sequence. This ensures that the model can use patterns over a given time-period to predict future outcomes.
+Afterwards, the training dataset are split into different folds to enable cross-validation. The data is split using \textit{TimeSeriesSplit} \footnote{\url{https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.TimeSeriesSplit.html}}. The method splits the data into equal portions, before being trained on the model using cross-validation. The reason for using the \textit{TimeSeriesSplit}, is to ensure that the data isn't shuffled, since all entries in a given split to be a continuous sequence. This ensures that the model can use patterns over a given time-period to predict future outcomes.
 
 \subsection{Specific transformations}
