@@ -1,10 +1,4 @@
 \documentclass[11pt,a4paper,parskip=half,bibliography=numbered,twocolumn]{scrartcl}
-\usepackage[left=2cm,right=2cm,top=2cm,bottom=4cm]{geometry}
-\usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc} % improved output encoding (easier copy/paste in pdf)
-\usepackage{microtype} % improved linebreaks & hyphens
-\usepackage{graphicx} % Required for inserting images
-\usepackage{pgfplots}
 \include{report/preamble}
 
 \title{Utilising Machine Learning in stabilising cement production}
@@ -23,7 +17,10 @@
 \input{report/sections/algorithms-considered}
 \input{report/sections/hyperparameter-tuning}
 \input{report/sections/results}
+\input{report/sections/model-analysis}
 \input{report/sections/future-work}
 \input{report/sections/conclusion}
+
+\printbibliography
 
 \end{document}

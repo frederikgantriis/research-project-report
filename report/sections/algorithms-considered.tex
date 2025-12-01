@@ -1,16 +1,38 @@
 \section{Algorithms Considered}
 
-The following algorithms were considered:
+Multiple different machine learning algorithms were used during testing 
 
-\todo{Write all Algorithms considered, and descripe why they where chosen and why the where discarded, as well as which where used as a benchmark}
-
-\begin{itemize}
-    \item Linear Regression
-    \item SVR
-    \item Random Forest Regressor
-    \item K-Nearest Neighbour Regressor
-    \item Ridge Regression
-    \item Lasso Regression
-    \item Temporal Convolutional Network
-    \item Multi-layer Perceptron
-\end{itemize}
+\begin{enumerate}
+    \item \texttt{LinearRegression}\footnote{\url{https://scikit-learn.org/stable/modules/linear_model.html#ordinary-least-squares}}: \textit{Linear Regression} or \textit{Ordinary Least Squares} is the simplest model tested. The model fits a linear model minimise the residual sum of squares between the observed targets in the dataset, and the targets predicted by the linear approximation. 
+    \begin{itemize}
+        \item Parameters tuned: None
+    \end{itemize}
+    \item \texttt{SVR}\footnote{\url{https://scikit-learn.org/stable/modules/svm.html#regression}}: \textit{Support Vector Machine} or \texttt{Support Vector Regressor}, constructs a hyper-plane in a high dimensional space, which can be used for classification, regression or other tasks. This algorithm are typically used for classification tasks, since the constructed hyper-plane, placed in an equal distance from the nearest points of each class categories, is used as a delimiter to determine which class a given data-point belongs to. This classification model can be extended to solve regression problems. The model produced by support vector classification depends only on a subset of the training data. The model will, in contrast to \texttt{Ordinary Least Squares}, not consider data-points that lie close the prediction. This means, that the placement of the delimiter will only be fitted to points lying outside a certain margin. The values from this delimiter will be used as the prediction.
+    \begin{itemize}
+        \item Parameters tuned: 
+    \end{itemize}
+    \item \texttt{Lasso}\footnote{\url{https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Lasso.html}}: \textit{Lasso Regression} is a linear model where the loss function is the \textit{Ordinary Least Squares} and the regularisation is given by L1 Regularisation. This means, that \textit{Lasso Regression} adds the absolute magnitude of the coefficients as a penalty term to the loss function.
+    \begin{itemize}
+        \item Parameters tuned: 
+    \end{itemize}
+    \item \texttt{Ridge}\footnote{\url{https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Ridge.html}}: Similar to \textit{Lasso Regression}, \textit{Ridge Regression} is a linear model where the loss function is the \textit{Ordinary Least Squares}. However, the regularisation in this model is given by L2 Regularisation. This means, that \textit{Ridge Regression} adds the squared magnitude of coefficients as a penalty term to the loss function.
+    \begin{itemize}
+        \item Parameters tuned: 
+    \end{itemize}
+    \item \texttt{KNeighborsRegressor}\footnote{\url{https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsRegressor.html#sklearn.neighbors.KNeighborsRegressor}}:
+    \begin{itemize}
+        \item Parameters tuned: 
+    \end{itemize}
+    \item \texttt{RandomForestRegressor}\footnote{\url{https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestRegressor.html#sklearn.ensemble.RandomForestRegressor}}:
+    \begin{itemize}
+        \item Parameters tuned: 
+    \end{itemize}
+    \item \texttt{XGBoost}\footnote{\url{https://federated-xgboost.readthedocs.io/en/latest/tutorials/model.html}}:
+    \begin{itemize}
+        \item Parameters tuned: 
+    \end{itemize}
+    \item \texttt{XGRFBoost}\footnote{\url{https://federated-xgboost.readthedocs.io/en/latest/tutorials/rf.html}}:
+    \begin{itemize}
+        \item Parameters tuned: 
+    \end{itemize}
+\end{enumerate}
