@@ -1,40 +1,49 @@
-\section{Algorithms Considered}
+\subsection{Training step}
+\label{sec:training}
 
-\todo{Explain the last algorithms and add what parameters were considered}
+Multiple different machine learning algorithms were trained and tested. These include:
 
-Multiple different machine learning algorithms were used during testing 
+\begin{itemize}
+    \item Linear Regression
+    \item Lasso Regression
+    \item Ridge Regression
+    \item Support Vector Regressor
+    \item K-Nearest Neighbour Regressor
+    \item Random Forest Regressor
+    \item XGBoost Regressor
+    \item XGBoost Random Forest Regressor
+\end{itemize}
 
-\begin{enumerate}
-    \item \texttt{LinearRegression}\footnote{\url{https://scikit-learn.org/stable/modules/linear_model.html#ordinary-least-squares}}: \textit{Linear Regression} or \textit{Ordinary Least Squares} is the simplest model tested. The model fits a linear model minimise the residual sum of squares between the observed targets in the dataset, and the targets predicted by the linear approximation. 
-    \begin{itemize}
-        \item Parameters tuned: None
-    \end{itemize}
-    \item \texttt{SVR}\footnote{\url{https://scikit-learn.org/stable/modules/svm.html#regression}}: \textit{Support Vector Machine} or \texttt{Support Vector Regressor}, constructs a hyper-plane in a high dimensional space, which can be used for classification, regression or other tasks. This algorithm are typically used for classification tasks, since the constructed hyper-plane, placed in an equal distance from the nearest points of each class categories, is used as a delimiter to determine which class a given data-point belongs to. This classification model can be extended to solve regression problems. The model produced by support vector classification depends only on a subset of the training data. The model will, in contrast to \texttt{Ordinary Least Squares}, not consider data-points that lie close the prediction. This means, that the placement of the delimiter will only be fitted to points lying outside a certain margin. The values from this delimiter will be used as the prediction.
-    \begin{itemize}
-        \item Parameters tuned: 
-    \end{itemize}
-    \item \texttt{Lasso}\footnote{\url{https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Lasso.html}}: \textit{Lasso Regression} is a linear model where the loss function is the \textit{Ordinary Least Squares} and the regularisation is given by L1 Regularisation. This means, that \textit{Lasso Regression} adds the absolute magnitude of the coefficients as a penalty term to the loss function.
-    \begin{itemize}
-        \item Parameters tuned: 
-    \end{itemize}
-    \item \texttt{Ridge}\footnote{\url{https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Ridge.html}}: Similar to \textit{Lasso Regression}, \textit{Ridge Regression} is a linear model where the loss function is the \textit{Ordinary Least Squares}. However, the regularisation in this model is given by L2 Regularisation. This means, that \textit{Ridge Regression} adds the squared magnitude of coefficients as a penalty term to the loss function.
-    \begin{itemize}
-        \item Parameters tuned: 
-    \end{itemize}
-    \item \texttt{KNeighborsRegressor}\footnote{\url{https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsRegressor.html#sklearn.neighbors.KNeighborsRegressor}}:
-    \begin{itemize}
-        \item Parameters tuned: 
-    \end{itemize}
-    \item \texttt{RandomForestRegressor}\footnote{\url{https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestRegressor.html#sklearn.ensemble.RandomForestRegressor}}:
-    \begin{itemize}
-        \item Parameters tuned: 
-    \end{itemize}
-    \item \texttt{XGBoost}\footnote{\url{https://federated-xgboost.readthedocs.io/en/latest/tutorials/model.html}}:
-    \begin{itemize}
-        \item Parameters tuned: 
-    \end{itemize}
-    \item \texttt{XGRFBoost}\footnote{\url{https://federated-xgboost.readthedocs.io/en/latest/tutorials/rf.html}}:
-    \begin{itemize}
-        \item Parameters tuned: 
-    \end{itemize}
-\end{enumerate}
+The following subsection gives a short explanation of each algorithm that have been tested.
+
+\subsubsection{Linear Regression}
+\def\linear{\textit{LIR}\xspace}
+\textit{Linear Regression} (\linear) or \textit{Ordinary Least Squares} is the simplest model tested. The model fits a linear model minimise the residual sum of squares between the observed targets in the dataset, and the targets predicted by the linear approximation.
+
+\subsubsection{Lasso Regression}
+\def\lasso{\textit{LAR}\xspace}
+\textit{Lasso Regression} (\lasso) is a linear model where the loss function is the \textit{Ordinary Least Squares} and the regularisation is given by L1 Regularisation. This means, that \lasso adds the absolute magnitude of the coefficients as a penalty term to the loss function.
+
+\subsubsection{Ridge Regression}
+\def\ridge{\textit{RR}\xspace}
+Similar to \textit{Lasso Regression}, \textit{Ridge Regression} (\ridge) is a linear model where the loss function is the \textit{Ordinary Least Squares}. However, the regularisation in this model is given by L2 Regularisation. This means, that \ridge adds the squared magnitude of coefficients as a penalty term to the loss function.
+
+\subsubsection{Support Vector Regressor}
+\def\svr{\textit{SVR}\xspace}
+\textit{Support Vector Machine} or \texttt{Support Vector Regressor} (\svr), constructs a hyper-plane in a high dimensional space, which can be used for classification, regression or other tasks. This algorithm are typically used for classification tasks, since the constructed hyper-plane, placed in an equal distance from the nearest points of each class categories, is used as a delimiter to determine which class a given data-point belongs to. This classification model can be extended to solve regression problems. The model produced by support vector classification depends only on a subset of the training data. The model will, in contrast to \texttt{Ordinary Least Squares}, not consider data-points that lie close the prediction. This means, that the placement of the delimiter will only be fitted to points lying outside a certain margin. The values from this delimiter will be used as the prediction.
+
+\subsubsection{K-Nearest Neighbour Regressor}
+\def\knnr{\textit{KNNR}\xspace}
+\textit{K-Nearest Neighbour Regressor} (\textit{KNNR}) is a variation of the classical \textit{K-Nearest Neighbour} clustering algorithm. In this variation, the algorithm find the \textit{K} closest training points to the input using a distance metric. It then finds the average of the target value from these training points and uses that average as the prediction. This means that training consist solely of storing the training data that the prediction will be based on.
+
+\subsubsection{Random Forest Regressor}
+\def\rfr{\textit{RFR}\xspace}
+Similar to \knnr, the \textit{Random Forest Regressor} (\rfr) is a variation on the \textit{Random Forest} algorithm. Here, training the model consist of training many different decision trees, all trained on a small random subset of the data and a random subset of features. When making a new prediction, each tree outputs its own prediction. The final prediction is then the average of all the predictions retrieved from all the different decision trees constructed during the training phase.
+
+\subsubsection{XGBoost Regressor}
+\def\xgbr{\textit{XGBR}\xspace}
+\textit{XGBoost Regression} (\xgbr) builds decision tree sequentially, where each tree focuses on correcting the errors of the previous ones. This process is also called \textit{gradient boosting}. When making a prediction, each tree predicts a small adjustment to the current model's output, contrary to \rfr where each tree makes a prediction. The final prediction is then the sum of all tree contributions, with regularisation to control complexity. 
+
+\subsubsection{XGBoost Random Forest Regressor}
+\def\xrf{\textit{XRF}\xspace}
+\textit{XGBoost Random Forest Regressor} (\xrf) is, as the name suggests, a combination of \rfr and \xgbr. Similar to \rfr, the training consist of constructing many decision trees in parallel, using a random subset of data and features. Contrary to \xgbr, trees are built in parallel, but optimised tree building and regularisation are still used. The final prediction is the an average of all the different outputs retrieved from the trees.
