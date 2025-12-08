@@ -1,5 +1,5 @@
 
-\section{Data Analysis}
+\subsection{Data Analysis}
 
 This project uses data given by \ap. All data is collected from the preheater tower mentioned in \autoref{sec:introduction}. This includes the following datapoints:
 
@@ -28,7 +28,7 @@ In addition, two features were compute from the previous mentioned features:
 
 These two features were added, based on expert knowledge from \ap.
 
-\section{Descriptive Statistics}
+\subsubsection{Descriptive Statistics}
 
 Before pre-processing and feature engineering, an explorative data analysis is needed to get a sense of which features would be deemed useful for the model, and how these features should be processed.
 
@@ -41,7 +41,7 @@ Before pre-processing and feature engineering, an explorative data analysis is n
 
 \autoref{fig:descriptive_stats} gives a quick overview of the mean values of each feature. This illustration shows that, while temperature readings are quite high, all other features generally deviate in a smaller range. However, due to the high temperature readings, scaling the input would be critical to enable good results from the models.
 
-\subsection{Correlation Analysis}
+\subsubsection{Correlation Analysis}
 
 \begin{figure}[H]
     \centering
@@ -58,15 +58,3 @@ Before pre-processing and feature engineering, an explorative data analysis is n
 \end{figure}
 
 \todo{Write description of correlation analysis}
-
-\subsection{Pre-processing and Feature Engineering}
-
-\todo{Explain the steps of simpleimputer and so on}
-
-\subsection{Train-Validation-Test Splitting Strategy}
-
-In regards to splitting the dataset into a train, validation and test dataset, the main focus has been to keep the order of the data throughout all processing. The reason being, that time-series data may include patterns present over a given time-period that models are able to learn. Therefore, the initial splitting only concerned splitting the dataset into train and test. The size of the training dataset was determined using try-and-test experimentation to choose an optimal size.
-
-Afterwards, the training dataset are split into different folds to enable cross-validation. The data is split using \textit{TimeSeriesSplit} \footnote{\url{https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.TimeSeriesSplit.html}}. The method splits the data into equal portions, before being trained on the model using cross-validation. The reason for using the \textit{TimeSeriesSplit}, is to ensure that the data isn't shuffled, since all entries in a given split to be a continuous sequence. This ensures that the model can use patterns over a given time-period to predict future outcomes.
-
-\subsection{Specific transformations}

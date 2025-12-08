@@ -1,0 +1,13 @@
+\subsection{Evaluation}
+
+For evaluating the models mentioned in \autoref{sec:training}, the following metrics were measured based the performance of the model on the testing dataset. In these definitions, the term \textit{Error} refers to the calculated difference between a prediction given by a model and ground truth given by the test dataset:
+
+\begin{itemize}
+    \item \textit{Root Mean Squared Error} (RMSE) is based on squaring each error, average these error and then take the square root of this average. Since all errors are squared it highlights the largest errors, which in addition highlights models with a large errors.
+    \item \textit{Mean Absolute Error} (MAE) is based on taking the average of the absolute value of each error. This metrics is a simple metrics that gives a baseline for how well a model performs in general.
+    \item \textit{Mean Absolute Percentage Error} (MAPE) is based on taking the absolute error, which are then divided by the ground truth and averaged as a percentage. It shows how large errors are in respect to the ground truth of a given prediction. This means, that the metrics becomes unusable if the ground truth are zero or near zero.
+    \item \textit{Max Error} (MA) is a very simple metric that shows what the single largest error is. This metric is very useful along with RMSE, since it gives the actual largest error that a given model had.
+\end{itemize}
+
+Other metrics were collected and tested, but the mentioned metrics were deemed the most useful to achieve a model capable of solving the problem described in \autoref{sec:case}.
+

@@ -1,0 +1,9 @@
+\subsection{Data Preprocessing}
+
+To prepare the dataset for the training step, a preprocessing sequence was applied to address missing data and feature scaling. First, missing values were imputed using the mean of each respective feature to maintain sample integrity. Subsequently, the data were standardised to achieve a mean of zero and unit variance across all features. This normalisation ensures that variables with larger magnitudes do not disproportionately influence the model, resulting in a consistent and less biased feature space.
+
+\subsubsection{Train-Validation-Test Splitting Strategy}
+
+In regards to splitting the dataset into a train, validation and test dataset, the main focus has been to keep the order of the data throughout all processing. The reason being, that time-series data may include patterns present over a given time period that models are able to learn. Therefore, the initial splitting only concerned splitting the dataset into train and test. The size of the training dataset was determined using try-and-test experimentation to choose an optimal size.
+
+Afterwards, the training dataset is split into different folds to enable cross-validation. The data is split using \textit{TimeSeriesSplit} \footnote{\url{https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.TimeSeriesSplit.html}}. The method splits the data into equal portions, before being trained on the model using cross-validation. The reason for using the \textit{TimeSeriesSplit} is to ensure that the data isn't shuffled, since all entries in a given split are a continuous sequence.
