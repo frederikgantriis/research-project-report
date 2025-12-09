@@ -4,29 +4,29 @@
 This project uses data given by \ap. All data is collected from the preheater tower mentioned in \autoref{sec:introduction}. This includes the following datapoints:
 
 \begin{itemize}
-    \item \texttt{PV1\_A\_Feed\_to\_Oven\_tons\_per\_day}:
-    \item \texttt{PV2\_A\_Bottom\_Pressure}:
-    \item \texttt{PV3\_A\_Bottom\_Temperature}:
-    \item \texttt{PV4\_A\_Top\_Pressure}:
-    \item \texttt{PV5\_A\_First\_Step\_Bottom\_Temperature}:
-    \item \texttt{PV6\_A\_Second\_Step\_Bottom\_Temperature}:
-    \item \texttt{PV7\_A\_Second\_Step\_Top\_Temperature}:
-    \item \texttt{PV8\_A\_FlueGasFan\_Power}:
-    \item \texttt{PV9\_A\_FlueGasFan\_Current}:
-    \item \texttt{month}:
-    \item \texttt{day}:
+    \item \texttt{PV1\_A\_Feed\_to\_Oven\_tons\_per\_day}: How many tons of slurry is feed to the kiln per day.
+    \item \texttt{PV2\_A\_Bottom\_Pressure}: The first pressure sensor before the first cyclone.
+    \item \texttt{PV3\_A\_Bottom\_Temperature}: The first temperature sensor before the first cyclone.
+    \item \texttt{PV4\_A\_Top\_Pressure}: The second pressure sensor after the first cyclone.
+    \item \texttt{PV5\_A\_First\_Step\_Bottom\_Temperature}: The second temperature sensor after the first cyclone.
+    \item \texttt{PV6\_A\_Second\_Step\_Bottom\_Temperature}: The third temperature sensor before the second cyclone
+    \item \texttt{PV7\_A\_Second\_Step\_Top\_Temperature}: The fourth temperature sensor after the second cyclone
+    \item \texttt{PV8\_A\_FlueGasFan\_Power}: Amount of power used by a fluegas-fan.
+    \item \texttt{PV9\_A\_FlueGasFan\_Current}: Amount of current used by a fluegas-fan.
+    \item \texttt{month}: Month extracted from the timestamp
+    \item \texttt{day}: Day extracted from the timestamp
 \end{itemize}
 
-All of these values were then implemented twice: Once for the A side and once for the B side of the pre-heater tower.
+All of these values were then implemented twice: Once for the A side and once for the B side of the pre-heater tower. Numbers on the B side matches the numbers on the be side with 10 added to each of them, meaning PV4 on the B-side is named PV14.
 
 In addition, two features were compute from the previous mentioned features:
 
 \begin{itemize}
-    \item \texttt{pressure\_diff}:
-    \item \texttt{temperature\_diff}:
+    \item \texttt{pressure\_diff}: The difference between PV2 and PV4
+    \item \texttt{temperature\_diff}: The difference between PV3 and PV5
 \end{itemize}
 
-These two features were added, based on expert knowledge from \ap.
+These two features were added, based on expert knowledge from \ap. Both features is used by the operates as critical signs that a cyclone blockage might be appearing. Therefore, predictions are mainly made on the difference in temperature.
 
 \subsubsection{Descriptive Statistics}
 
@@ -39,9 +39,17 @@ Before pre-processing and feature engineering, an explorative data analysis is n
     \label{fig:descriptive_stats}
 \end{figure}
 
-\autoref{fig:descriptive_stats} gives a quick overview of the mean values of each feature. This illustration shows that, while temperature readings are quite high, all other features generally deviate in a smaller range. However, due to the high temperature readings, scaling the input would be critical to enable good results from the models.
+\autoref{fig:descriptive_stats} gives a quick overview of the mean values of each feature. This illustration shows that, while temperature readings are quite high, all other features generally deviate in a smaller range. However, due to the high temperature readings, scaling the input would be critical to enable good results from the models. Furthermore, it should be noted, that both PV6 and PV16 contains negative values. This means, that some metrics would have to be discarded, since negative values is not compatible with all metrics.
+
+\todo{insert numbers from the descriptive statistics}
 
 \subsubsection{Correlation Analysis}
+
+For the correlation analysis, both Spearman- and Pearson correlation have been computed.
+
+The Pearson correlation measures the linear relationship between two variables. It assumes numeric, continuous data and is sensitive to outliers. A high Pearson correlation means the variables move together in a straight-line pattern.
+
+Contrary, Spearman correlation measures the monotonic relationship between two variables by comparing their ranked values. It does not assume linearity and is more robust to outliers. A high Spearman correlation means that as one variable increases, the other tends to increase (or decrease) consistently, even if the relationship is not linear.
 
 \begin{figure}[H]
     \centering
@@ -50,6 +58,8 @@ Before pre-processing and feature engineering, an explorative data analysis is n
     \label{fig:pearson}
 \end{figure}
 
+In general, the Pearson correlation shown on \autoref{fig:pearson} is very high across multiple different parameters, also across the A and B side. Most values scores over 0.7 suggesting a high correlation across the sensors provided by \ap. This can be explained from the fact that all sensors in each side is placed consequently one after another. However, this does not explain the strong correlation from the A- to the B-side. For instance, PV3 and PV12 are similar sensors places on each side, that still achieves a correlation of 0.93. This suggests, that excluding one side while predicting the other may not provide the best results.
+
 \begin{figure}[H]
     \centering
     \includegraphics[width=\linewidth]{report/img/spearman_correlation_matrix.png}
@@ -57,4 +67,7 @@ Before pre-processing and feature engineering, an explorative data analysis is n
     \label{fig:spearman}
 \end{figure}
 
-\todo{Write description of correlation analysis}
+Looking at \autoref{fig:spearman}, the analysis becomes much more nuanced. In broad terms, most sensors has a positive correlation. However, especially sensors such as PV6 and PV7, as well as the respective sensor for the B-side (PV16 and PV17), has a strong correlation to each other and the B-side. Furthermore, the mentioned sensors have a weak correlation to most other sensors. This is spectacular pattern, since these sensor depend on a completely different set of parameters.
+
+Both figures gives us a clear picture. Firstly, there is a strong general correlation. Secondly, sensors from one side might have a strong correlation with either the same respective sensor or others placed on the opposite side. This information determines the experimentation of the models, since variant with data from both sides and from a single side would have to be tested. 
+
