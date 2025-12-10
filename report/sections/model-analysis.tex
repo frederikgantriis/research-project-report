@@ -1,12 +1,42 @@
 \section{Analysis}
 
-\todo{Show images from predictions in critical moments}
-\todo{Compare results based on visualisations of predictions}
+\todo{Add clear headers for specific sections i.e. specific points that are made}
 
-The following text is used as notes and should not be review:
+One of the observations noted in \autoref{sec:results} is the scores of \linear, \lasso, \ridge, and \elastic. In all the shown metrics, these models achieve scores in the same range. When inspecting the prediction compared to the ground truth, it shows that all the mentioned models provide a prediction that seems to have a certain consistent offset from the ground truth. For instance, the prediction from Lasso Regression, as shown by the orange line on \autoref{fig:lasso-bias}, seems to follow the trend of the ground truth but with a consistent offset that pushes the prediction upwards.
 
-XGB shows extraordinary good performance, even during stoppages.
+\begin{figure}
+    \centering
+    \includegraphics[width=\linewidth]{report/img/lasso-regression-bias.png}
+    \caption{Lasso Regression}
+    \label{fig:lasso-bias}
+\end{figure}
 
-Random forest shows weird patterns, where is reaches plateus, and does not fit the rapid changes that other models does.
+Also noted in \autoref{sec:results}, was the performance of \rfr. This model is consistently better than the models described in the previous section, but never seems to achieve the same results as \xgbr. After inspecting the results, it becomes clear that the prediction this model makes doesn't follow the smooth curve that the ground truth has. Shown on \autoref{fig:rf-plateus}, the ground truth can be almost hard to spot. It is clear that the prediction tries to follow the trend, but the model reaches certain steps before moving to the next prediction.
 
-Linear, Lasso, ElasticNet and Ridge all show good performance, but all seems to have some kind of bias since the curve is consistently placed lower than the ground truth.
+The step-wise predictions could be due to the inherent structure of decision trees. Each tree partitions the feature space into discrete regions and assigns a constant prediction. Consequently, individual trees generate constant output functions, and the forest’s overall prediction, being an average of these functions, retains this staircase-like form, albeit with smoother transitions. This results in characteristic plateaus where the predicted value remains constant until the input crosses a boundary that moves it into a different leaf region. 
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\linewidth]{report/img/randomforest-plateus.png}
+    \caption{Random Forest}
+    \label{fig:rf-plateus}
+\end{figure}
+
+To support this claim, the results shown on \autoref{fig:xgboost_critical} reveal a much smoother prediction. As explained in \autoref{sec:training}, \xgbr also uses a decision tree with the addition of gradient boosting. This means that the prediction it makes achieves a smoother curve than what is shown on \autoref{fig:rf-plateus}.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\linewidth]{report/img/xgbregressor_critical_moment.png}
+    \caption{XGBoost}
+    \label{fig:xgboost_critical}
+\end{figure}
+
+ In \autoref{fig:xgboost_critical}, the prediction is given in a time period where a blockage is known to have happened. Even in this case, \xgbr shows extraordinary performance. It catches most of the trend and is able to detect both sudden increases and decreases in the temperature difference. This is critical for \ap. The increase in temperature is a sign of a blockage in the cyclone, which the operators would be able to detect before it happens.
+
+ The observations in \autoref{sec:results} support this performance. In all mentioned metrics, \xgbr scores significantly lower than other models tested. Especially when looking at \MAPE where \xgbr scores under 0.5\%. 
+
+ However, it should be noted that these predictions are made 5 seconds into the future. This means that while the results may be impressive, testing \xgbr on predicting longer into the future could provide less impressive results.
+
+
+
+

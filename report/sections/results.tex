@@ -1,12 +1,16 @@
 \section{Results}
+\label{sec:results}
 
 All models explained in \autoref{sec:training}, apart from \xgbr and \xrf, were implemented using the \texttt{scikit-learn}\footnote{\url{https://scikit-learn.org/stable/}} library in the Python programming language. Both \xgbr and \xrf were implemented using the \textit{XGBoost}\footnote{\url{https://xgboost-clone.readthedocs.io/en/latest/}} library. Furthermore, all metrics used were also calculated using the mentioned \textit{scikit-learn} library. 
+
+\todo{Specify CPU and the GPU}
+All of these experiments were done on an Intel CPU and a Nvidia RTX 3080 GPU.
 
 Looking at all the presented results, it becomes clear that \svr is missing from the visualisation. This is due to experimentation taking more time than initially planned, and all experiments were therefore removed. This pattern was both shown when running the given model on both CPU and GPU. This means, that while \svr might have provided good results, testing and experimentation were focused on hyper-parameter tuning other models with shorter completion-times.
 
 Overall, \xgbr achieves the lowest scores. In all available metrics, \xgbr scores significantly lower than all other models. Looking at \autoref{fig:RMSE}, \xgbr and \rfr are the outliers that scores lower than others. All other models, even including \xrf, scores around the same result with any significant differences.
 
-\begin{figure}[H]
+\begin{figure}
     \centering
     \includegraphics[width=\linewidth]{report/img/RMSE.png}
     \caption{RMSE}
@@ -15,7 +19,7 @@ Overall, \xgbr achieves the lowest scores. In all available metrics, \xgbr score
 
 Inspecting the results from \autoref{fig:mae}, \xgbr still scores significantly lower than others. However, the poorest performing model \xrf which is much worse than the closely related model \rfr. Surprisingly, \xrf perform worse than more simple models like \linear. 
 
-\begin{figure}[H]
+\begin{figure}
     \centering
     \includegraphics[width=\linewidth]{report/img/MAE.png}
     \caption{MAE}
@@ -24,7 +28,7 @@ Inspecting the results from \autoref{fig:mae}, \xgbr still scores significantly 
 
 This observation is highlighted by \autoref{fig:MAPE} were the same pattern is observed. However, in this figure, \xgbr and \rfr gets similar scores, while other models, apart from \xrf, again have scores in the same range.
 
-\begin{figure}[H]
+\begin{figure}
     \centering
     \includegraphics[width=\linewidth]{report/img/MAPE.png}
     \caption{MAPE}
@@ -33,7 +37,7 @@ This observation is highlighted by \autoref{fig:MAPE} were the same pattern is o
 
 Lastly, inspecting \autoref{fig:max_error} it is again clear that \xgbr is the best performing model. In contrast to previous observations, \xrf is better than \rfr. Furthermore, \linear seems to be the outlier, while the rest of the models scores in the same range, as was the conclusion from previous figures.
 
-\begin{figure}[H]
+\begin{figure}
     \centering
     \includegraphics[width=\linewidth]{report/img/Max_Error.png}
     \caption{Max Error}

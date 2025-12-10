@@ -1,13 +1,13 @@
 \section{Related Work}
 
-Before further explaining the details of the project, it is important to have an understanding of previous work done in the research field. Hence, the following literature review is structured into 3 sections: Using machine learning for predictive Maintenance, in cement production and in carbon capture systems. Lastly, a summarisation of the mentioned research will be presented to frame the problem space and identify the niche that this project fills.
+Before further explaining the details of the project, it is important to have an understanding of previous work done in the research field. Hence, the following literature review is structured into 3 sections: Using machine learning for predictive maintenance, in cement production and in carbon capture systems. Lastly, a summarisation of the mentioned research will be presented to frame the problem space and identify the niche that this project fills.
 
 \subsection{Predictive Maintenance}
 \label{sec:pdm}
 
 Before exploring the work done in the field of predictive maintenance, a definition of such term is required to understand the scope of the term. 
 
-Therefore, this project uses the definitions given by \textcite{susto2012} and \cite{susto2015}. Here, maintenance procedures are split into the following 3 categories:
+Therefore, this project uses the definitions given by \textcite{susto2012} and \textcite{susto2015}. Here, maintenance procedures are split into the following 3 categories:
 
 \begin{itemize}
     \item \textit{Run-to-failure}, or \textit{Corrective Maintenance}, happens only when equipment or procedures fail. This is the simplest strategy, since it only happens as needed.
@@ -17,11 +17,11 @@ Therefore, this project uses the definitions given by \textcite{susto2012} and \
 
 Using these definitions, this project is focused on utilising \pdm to determine when a blockage in the pre-heater tower, mentioned in \autoref{sec:case}, will happen. It is with these predictions that \ap would be able to transition from a \textit{Corrective Maintenance} procedure into a \pdm procedure.
 
-Such use-cases of \pdm are not anything new. In \cite{prytzPredictingNeedVehicle2015}, a Random Forest Classification algorithm (RF) was used to develop a method for predicting repairs to various components of commercial vehicles. 
+Such use-cases of \pdm are not anything new. In \textcite{prytzPredictingNeedVehicle2015}, a Random Forest Classification algorithm (RF) was used to develop a method for predicting repairs to various components of commercial vehicles. 
 
-In addition, in \cite{biswal2015} an Artificial Neural Network (ANN) was deployed to classify characteristics of a healthy and defective state, in artificial components of a wind turbine with an accuracy of 92,6\%. 
+In addition, in \textcite{biswal2015} an Artificial Neural Network (ANN) was deployed to classify characteristics of a healthy and defective state, in artificial components of a wind turbine with an accuracy of 92,6\%. 
 
-The last paper to highlight is \cite{praveenkumarFaultDiagnosisAutomobile2014} that proposes a Support Vector Machine (SVM) to identify failures in automotive transmission boxes. Here, four gearboxes are tested at two different speeds and load conditions. Afterwards, the resources are extracted from the vibration signals acquired to train the model. The model was evaluated to be able to classify gearbox failures with precision greater than 90\%.
+The last paper to highlight is \textcite{praveenkumarFaultDiagnosisAutomobile2014} that proposes a Support Vector Machine (SVM) to identify failures in automotive transmission boxes. Here, four gearboxes are tested at two different speeds and load conditions. Afterwards, the resources are extracted from the vibration signals acquired to train the model. The model was evaluated to be able to classify gearbox failures with precision greater than 90\%.
 
 These examples underline the value of utilising machine learning, in vastly different forms, to apply \pdm. In these examples, both RF, ANN and SVM were used to achieve good-performing models. It is with this knowledge that this project is determined to solve the case described in \autoref{sec:case}, by experimenting with different machine learning algorithms to apply \pdm successfully.
 
@@ -30,7 +30,7 @@ These examples underline the value of utilising machine learning, in vastly diff
 
 The use of machine learning in the cement industry is still a newly evolving field. However, it seems that previous research has mainly been focused on the quality of the cement, rather than the production of it. 
 
-Papers like \cite{oeyMachineLearningCan2020} focus on applying machine learning algorithms to predict the setting behaviour and strength evolution of hydrating cement systems. In addition, this paper, \cite{asterisPredictionCementbasedMortars2021}, focuses on predicting cement-based mortars' compressive strength using machine learning; both the limitations of previous studies and how to improve the previous methodology. Along the same lines, this paper \cite{asem_ali_2022} takes a similar approach and focuses on optimising the quality of the clinkers.
+Papers like \textcite{oeyMachineLearningCan2020} focus on applying machine learning algorithms to predict the setting behaviour and strength evolution of hydrating cement systems. In addition, this paper, \textcite{asterisPredictionCementbasedMortars2021}, focuses on predicting cement-based mortars' compressive strength using machine learning; both the limitations of previous studies and how to improve the previous methodology. Along the same lines, this paper \textcite{asem_ali_2022} takes a similar approach and focuses on optimising the quality of the clinkers.
 
 One interesting paper to look at in this context is the paper (\cite{benchekrounCementKilnSafety2023}. In this paper, predictive maintenance is applied to prevent cyclone blockages in pre-heater towers used in cement production, similar to what is described in \autoref{sec:case}. However, a simulation was used to enable the development of multiple different machine learning algorithms. This means that all data used is extracted from the simulation. Furthermore, it focuses on developing a data platform for gathering data, visualising and predicting cyclone blockages, to enhance the safety and reliability of the production.
 
@@ -47,7 +47,7 @@ When it comes to utilising machine learning to optimise usage of such carbon cap
 
 However, no literature could be found on stabilising cement production with machine learning and \pdm for effective use of carbon capture systems. Furthermore, the use of carbon capture systems in the cement industry is very limited (\cite{CCUSCleanEnergy2020}). This is where this project tries to fill this gap.
 
-\subsection{Summarisation}
+\subsection{Positioning}
 
 As the previous sections conclude, there seems to be a missing connection between these different fields of research.
 

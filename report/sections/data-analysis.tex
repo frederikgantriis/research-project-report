@@ -32,12 +32,12 @@ These two features were added, based on expert knowledge from \ap. Both features
 
 Before pre-processing and feature engineering, an explorative data analysis is needed to get a sense of which features would be deemed useful for the model, and how these features should be processed.
 
-\begin{figure}[H]
+\begin{figure*}
     \centering
-    \includegraphics[width=\linewidth]{report/img/descriptive_stats.png}
+    \includegraphics[width=\textwidth]{report/img/descriptive_stats.png}
     \caption{Overview of Mean and std deviation of each feature}
     \label{fig:descriptive_stats}
-\end{figure}
+\end{figure*}
 
 \autoref{fig:descriptive_stats} gives a quick overview of the mean values of each feature. This illustration shows that, while temperature readings are quite high, all other features generally deviate in a smaller range. However, due to the high temperature readings, scaling the input would be critical to enable good results from the models. Furthermore, it should be noted, that both PV6 and PV16 contains negative values. This means, that some metrics would have to be discarded, since negative values is not compatible with all metrics.
 
@@ -51,7 +51,7 @@ The Pearson correlation measures the linear relationship between two variables. 
 
 Contrary, Spearman correlation measures the monotonic relationship between two variables by comparing their ranked values. It does not assume linearity and is more robust to outliers. A high Spearman correlation means that as one variable increases, the other tends to increase (or decrease) consistently, even if the relationship is not linear.
 
-\begin{figure}[H]
+\begin{figure}
     \centering
     \includegraphics[width=\linewidth]{report/img/pearson_correlation_matrix.png}
     \caption{Pearson Correlation Matrix}
@@ -60,7 +60,7 @@ Contrary, Spearman correlation measures the monotonic relationship between two v
 
 In general, the Pearson correlation shown on \autoref{fig:pearson} is very high across multiple different parameters, also across the A and B side. Most values scores over 0.7 suggesting a high correlation across the sensors provided by \ap. This can be explained from the fact that all sensors in each side is placed consequently one after another. However, this does not explain the strong correlation from the A- to the B-side. For instance, PV3 and PV12 are similar sensors places on each side, that still achieves a correlation of 0.93. This suggests, that excluding one side while predicting the other may not provide the best results.
 
-\begin{figure}[H]
+\begin{figure}
     \centering
     \includegraphics[width=\linewidth]{report/img/spearman_correlation_matrix.png}
     \caption{Spearman Correlation Matrix}
@@ -71,3 +71,23 @@ Looking at \autoref{fig:spearman}, the analysis becomes much more nuanced. In br
 
 Both figures gives us a clear picture. Firstly, there is a strong general correlation. Secondly, sensors from one side might have a strong correlation with either the same respective sensor or others placed on the opposite side. This information determines the experimentation of the models, since variant with data from both sides and from a single side would have to be tested. 
 
+\subsubsection{Autocorrelation analysis}
+\label{sec:autocorrelation}
+
+In addition to the provided correlation analysis, an autocorrelation analysis was performed to analyse correlation over time. Autocorrelation measures the linear relationship between a time series and a lagged version of itself. It quantifies how strongly past values predict current values at different time lags, indicating the presence of temporal dependence or repeating patterns. High autocorrelation at a given lag suggests that observations separated by that lag are systematically related rather than independent.
+
+In this analysis, it is clear that patterns emerge over time for both PV3 (\autoref{fig:PV3-autocorrelation}) and PV5 (\autoref{fig:PV5-autocorrelation}); the two sensors used to create \texttt{temperature\_diff}. Even when the correlation switches from being a high positive correlation to being a negative correlation, there is still a clear pattern shown that is present in both of the mentioned figures. This means, that the data should be kept in order when splitting the dataset, to ensure that patterns collected over time aren't lost. 
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\linewidth]{report/img/PV3_A_Bottom_Temperature_autocorrelation.png}
+    \caption{Autocorrelation for PV3}
+    \label{fig:PV3-autocorrelation}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\linewidth]{report/img/PV5_A_First_Step_Bottom_Temperature_autocorrelation.png}
+    \caption{Autocorrelation for PV5}
+    \label{fig:PV5-autocorrelation}
+\end{figure}
