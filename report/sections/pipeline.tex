@@ -1,5 +1,7 @@
 \section{Project structure}
 
+As described in \autoref{sec:case}, \ap wants to predict cyclone blockages by predicting the difference in temperature between a sensor at top and bottom of a given cyclone. For this project, the lowest cyclone, also refereed to as the second step cyclone, was chosen as the main focus point due to the amount of blockages there have been within the last two years.
+
 The project is structured in a data-centred pipeline. To achieve this, \textit{Data Version Control} (DVC) \footnote{\url{https://dvc.org/doc}} was used for both managing and versioning the data received from Aalborg Portland, as well as managing the testing and hyper-parameter tuning.
 
 The pipeline consist of the following steps:
