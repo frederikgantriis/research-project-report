@@ -2,4 +2,6 @@
 
 This step consists solely of preparing the dataset from the raw data files received by \ap into a dataset that could be analysed and pre-processed before model training. 
 
-The data was received as large command-separated values, also known as \textit{csv}. All data received were merged into one large dataset. This dataset was then cleaned for missing values, and all feature names were translated to ensure readability and easy understanding of each feature. Timestamps were then split up into month and day to ensure that the data preserves seasonality, since the timestamps are removed before training the models.
+The data was received as large comma-separated values, also known as \textit{csv}. All data received was merged into one large dataset based on the timestamp. This dataset was then cleaned for cases where the label was missing were removed, and all feature names were translated to ensure readability and easy understanding of each feature. Timestamps were then split up into month and day to ensure that the data preserves seasonality, since the timestamps are removed before training the models.
+
+\todo{decide whether to say why the year wasn't included}

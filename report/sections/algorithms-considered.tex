@@ -1,7 +1,11 @@
 \subsection{Training step}
 \label{sec:training}
 
+\todo{Add ElasticNet}
+
 Multiple different machine learning algorithms were trained and tested. These include:
+
+\todo{Add references to explanations for models}
 
 \begin{itemize}
     \item Linear Regression
@@ -38,7 +42,7 @@ Similar to \textit{Lasso Regression}, \textit{Ridge Regression} (\ridge) is a li
 
 \subsubsection{Random Forest Regressor}
 \def\rfr{\textit{RFR}\xspace}
-Similar to \knnr, the \textit{Random Forest Regressor} (\rfr) is a variation on the \textit{Random Forest} algorithm. Here, training the model consist of training many different decision trees, all trained on a small random subset of the data and a random subset of features. When making a new prediction, each tree outputs its own prediction. The final prediction is then the average of all the predictions retrieved from all the different decision trees constructed during the training phase.
+Similar to \knnr, the \textit{Random Forest Regressor} (\rfr) is a variation on the \textit{Random Forest} algorithm. Here, training the model consist of training many different decision trees, all trained on a small random subset of the data and a random subset of features. This process is also referred to as bagging. When making a new prediction, each tree outputs its own prediction. The final prediction is then the average of all the predictions retrieved from all the different decision trees constructed during the training phase.
 
 \subsubsection{XGBoost Regressor}
 \def\xgbr{\textit{XGBR}\xspace}
