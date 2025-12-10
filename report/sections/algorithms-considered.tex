@@ -1,21 +1,20 @@
 \subsection{Training step}
 \label{sec:training}
 
-\todo{Add ElasticNet}
-
 Multiple different machine learning algorithms were trained and tested. These include:
 
 \todo{Add references to explanations for models}
 
 \begin{itemize}
-    \item Linear Regression
-    \item Lasso Regression
-    \item Ridge Regression
-    \item Support Vector Regressor
-    \item K-Nearest Neighbour Regressor
-    \item Random Forest Regressor
-    \item XGBoost Regressor
-    \item XGBoost Random Forest Regressor
+    \item Linear Regression\footnote{\cite{preethi_optimizing_2025}}
+    \item Lasso Regression\footnote{\cite{preethi_optimizing_2025}} 
+    \item Ridge Regression\footnote{\cite{preethi_optimizing_2025}}
+    \item Elastic Net Regression\footnote{\cite{preethi_optimizing_2025}}
+    \item Support Vector Regressor\footnote{\cite{preethi_optimizing_2025}}
+    \item K-Nearest Neighbour Regressor\footnote{\cite{yan_survey_nodate}}
+    \item Random Forest Regressor\footnote{\cite{yan_survey_nodate}}
+    \item XGBoost Regressor\footnote{\cite{yan_survey_nodate}}
+    \item XGBoost Random Forest Regressor\footnote{\cite{yan_survey_nodate}}
 \end{itemize}
 
 The following subsection gives a short explanation of each algorithm that have been tested.
@@ -31,6 +30,10 @@ The following subsection gives a short explanation of each algorithm that have b
 \subsubsection{Ridge Regression}
 \def\ridge{\textit{RR}\xspace}
 Similar to \textit{Lasso Regression}, \textit{Ridge Regression} (\ridge) is a linear model where the loss function is the \textit{Ordinary Least Squares}. However, the regularisation in this model is given by L2 Regularisation. This means, that \ridge adds the squared magnitude of coefficients as a penalty term to the loss function.
+
+\subsubsection{Elastic Net Regression}
+\def\elastic{\textit{EN}\xspace}
+For the last of the \linear variations, \textit{Elastic Net Regression} (\elastic) fits a linear model while applying both \lasso and \ridge. The final model balances both penalties to handle correlated features better than \lasso or \ridge alone.
 
 \subsubsection{Support Vector Regressor}
 \def\svr{\textit{SVR}\xspace}
