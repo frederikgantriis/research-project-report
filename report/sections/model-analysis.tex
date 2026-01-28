@@ -1,12 +1,10 @@
 \section{Analysis}
 
-\todo{Add clear headers for specific sections i.e. specific points that are made}
-
 \subsection{Linear Regression models performs the same}
 
 One of the observations noted in \autoref{sec:results} is the scores of \linear, \lasso, \ridge, and \elastic. In all the shown metrics, these models achieve scores in the same range. When inspecting the prediction compared to the ground truth, it shows that all the mentioned models provide a prediction that seems to have a certain consistent offset from the ground truth. For instance, the prediction from Lasso Regression, as shown by the orange line on \autoref{fig:ridge-bias}, seems to follow the trend of the ground truth but with a consistent offset that pushes the prediction upwards.
 
-\begin{figure}
+\begin{figure}[t]
     \centering
     \includegraphics[width=\linewidth]{report/img/ridge-78.png}
     \caption{Ridge Regression}
@@ -19,18 +17,18 @@ Also noted in \autoref{sec:results}, was the performance of \rfr. This model is 
 
 The step-wise predictions could be due to the inherent structure of decision trees. Each tree partitions the feature space into discrete regions and assigns a constant prediction. Consequently, individual trees generate constant output functions, and the forest’s overall prediction, being an average of these functions, retains this staircase-like form, albeit with smoother transitions. This results in characteristic plateaus where the predicted value remains constant until the input crosses a boundary that moves it into a different leaf region. 
 
-\begin{figure}
+\begin{figure}[t]
     \centering
     \includegraphics[width=\linewidth]{report/img/rf-78.png}
     \caption{Random Forest}
     \label{fig:rf-plateus}
-\end{figure}o
+\end{figure}
 
 \subsection{Precision of XGBoost}
 
 To support this claim, the results shown on \autoref{fig:xgboost_critical} reveal a much smoother prediction. As explained in \autoref{sec:training}, \xgbr also uses a decision tree with the addition of gradient boosting. This means that the prediction it makes achieves a smoother curve than what is shown on \autoref{fig:rf-plateus}.
 
-\begin{figure}
+\begin{figure}[t]
     \centering
     \includegraphics[width=\linewidth]{report/img/xgb-78.png}
     \caption{XGBoost}
@@ -39,13 +37,26 @@ To support this claim, the results shown on \autoref{fig:xgboost_critical} revea
 
 In \autoref{fig:xgboost_critical}, the prediction is given in a time period where a blockage is known to have happened. Even in this case, \xgbr shows extraordinary performance. It catches most of the trend and is able to detect both sudden increases and decreases in the temperature difference. This is critical for \ap. The increase in temperature is a sign of a blockage in the cyclone, which the operators would be able to detect before it happens.
 
-The observations in \autoref{sec:results} support this performance. In all mentioned metrics, \xgbr scores significantly better, apart from \MAPE, than other models tested. Especially when looking at \RT where \xgbr scores under 0.5\%. 
+The observations in \autoref{sec:results} support this performance. In all mentioned metrics, apart from \MAPE, \xgbr scores significantly better than other models tested. Especially when looking at \RT where \xgbr scores under 0.5\%. 
 
 After manual inspection of points in the test results that were known to be cyclone blockages, \xgbr correctly identifies rapid increases and decreases in temperature 13 out of 14 times. This highlights the patterns that the metrics mentioned in \autoref{sec:results} showed. \xgbr shows an incredible ability to predict cyclone blockages by correctly identifying changes in the temperature difference.
 
 However, it should be noted that these predictions are made 5 seconds into the future. Therefore, to test whether \xgbr would keep the same results when predicting father out into the future, two quick tests were executed, where \xgbr was trained and tested on predicting respectively 1 and 5 minutes into the future. 
 
-\
+As shown on both \autoref{fig:xgbr-one} and \autoref{fig:xgbr-five}, while the precision of the model has decreased, \xgbr is still capable of detecting the sudden change in the temperature difference, which again, shows the capabilities of \xgbr.
 
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=\linewidth]{report/img/xgb-1m-78.png}
+    \caption{\xgbr predicting 1 minute}
+    \label{fig:xgbr-one}
+\end{figure}
+
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=\linewidth]{report/img/xgb-5m-78.png}
+    \caption{\xgbr predicting 5 minute}
+    \label{fig:xgbr-five}
+\end{figure}
 
 

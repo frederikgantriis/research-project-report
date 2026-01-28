@@ -1,7 +1,5 @@
 \subsection{Data Preparation}
 
-This step consists solely of preparing the dataset from the raw data files received by \ap into a dataset that could be analysed and pre-processed before model training. The data received consist of sensor-reading from every 5 seconds in the period September 2023 to September 2025.
+This step consists solely of preparing the dataset from the raw data files received by \ap into a dataset that could be analysed and pre-processed before model training. The data received consists of sensor readings every 5 seconds in the period September 2023 to September 2025.
 
-The data was received as large comma-separated values, also known as \textit{csv}. All data received was merged into one large dataset based on the timestamp. This dataset was then cleaned for cases where the label was missing were removed, and all feature names were translated to ensure readability and easy understanding of each feature. Timestamps were then split up into month and day to ensure that the data preserves seasonality, since the timestamps are removed before training the models.
-
-\todo{decide whether to say why the year wasn't included}
+The data was received as large comma-separated values, also known as \textit{csv}. All data received was merged into one large dataset based on the timestamp. This dataset was then cleaned for cases where the label was missing were removed, and all feature names were translated to ensure readability and easy understanding of each feature. Timestamps were then split up into month and day to ensure that the data preserves seasonality, since the timestamps are removed before training the models. Since the data consist of a two-year period, the year-parameter were deemed unneeded since years are monotonic and not cyclical as days and months. Therefore, to get the encoded seasonality, only day and month were extracted.

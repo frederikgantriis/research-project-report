@@ -1,3 +1,13 @@
 \section{Conclusion}
 
-\todo{Write the conclusion}
+This paper described how machine learning can be utilised to perform predictive maintenance on cyclone blockages in the pre-heating tower placed in the production of \ap. 
+
+First, previous research was explored to both define the term predictive maintenance and also explain previous work done in the fields of predictive maintenance, machine learning in cement production and carbon capture systems. 
+
+Afterwards, the project structure was outlined, with a clear data-centred pipeline, with each step of the pipeline (data preparation, data analysis, preprocessing, training and evaluation) explained in more detail. Notably, in the data analysis, both descriptive statistics, correlation analysis and autocorrelation analysis were shown to provide a clear picture of a dataset with high correlation across different features and across time steps. 
+
+The results were then provided, where the models \linear, \lasso, \ridge, \elastic, \rfr, \xgbr and \xrf were tested and evaluated using different distance metrics such as \RMSE and \MSE along with \RT. 
+
+In the analysis, it became clear that while other models, such as \rfr and \xrf, showed promising results, \xgbr were the best model across most metrics measured. On 13 of the 14 known cyclone blockages in the test data, \xgbr was able to detect sudden changes in temperature differences, which are critical for \textit{Aalborg Portland} in order to prevent cyclone blockages. Furthermore, tests showing \xgbr performance on predicting 1-minute and 5-minute intervals showed very promising results, where, with less precision, both variations were able to detect the same sudden changes in temperature.
+
+Lastly, future work should focus on additional exploration of time series modelling technique, testing neural network-based sequence learning approaches, and implementing such models in the monitoring systems used by \ap.

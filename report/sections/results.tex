@@ -3,14 +3,13 @@
 
 All models explained in \autoref{sec:training}, apart from \xgbr and \xrf, were implemented using the \texttt{scikit-learn}\footnote{\url{https://scikit-learn.org/stable/}} library in the Python programming language. Both \xgbr and \xrf were implemented using the \textit{XGBoost}\footnote{\url{https://xgboost-clone.readthedocs.io/en/latest/}} library. Furthermore, all metrics used were also calculated using the mentioned \textit{scikit-learn} library. 
 
-\todo{Specify CPU and the GPU}
-All of these experiments were done on an Intel CPU and an Nvidia RTX 3080 GPU.
+All of these experiments were done locally on an Intel i7-12700H CPU\footnote{\url{https://www.intel.com/content/www/us/en/products/sku/132228/intel-core-i712700h-processor-24m-cache-up-to-4-70-ghz/ specifications.html}} and an Nvidia Geforce RTX 3050 Mobile GPU\footnote{\url{https://www.techpowerup.com/gpu-specs/geforce-rtx-3050-mobile.c3788}}.
 
-Looking at all the presented results, it becomes clear that \svr is missing from the visualisation. This is due to experimentation taking more time than initially planned, and all experiments were therefore removed. This pattern was shown when running the given model on both CPU and GPU. This means that while \svr might have provided good results, testing and experimentation were focused on hyper-parameter tuning other models with shorter completion times.
+Looking at all the presented results, it becomes clear that \svr is missing from the visualisation. This is due to experimentation taking more time than initially planned, and all experiments were therefore removed. This pattern was shown when running the given model on both CPU and GPU. The implementation of \svr has a fit time complexity that is more than quadratic with the number of samples, which makes scaling to datasets with more than 10000 samples impossible\footnote{\url{https://scikit-learn.org/stable/modules/generated/sklearn.svm.SVR.html}}. This means that while \svr might have provided good results, testing and experimentation were focused on hyper-parameter tuning other models with shorter completion times.
 
 Overall, \xgbr achieves the lowest scores. In all available metrics, \xgbr scores significantly lower than all other models. Looking at \autoref{fig:RMSE}, \xgbr and \rfr are the outliers that score lower than others. All other models, apart from \xrf, score around the same result with no significant differences.
 
-\begin{figure}
+\begin{figure}[t]
     \centering
     \includegraphics[width=\linewidth]{report/img/RMSE.png}
     \caption{RMSE}
@@ -28,7 +27,7 @@ Inspecting the results from \autoref{fig:mae}, \xgbr still scores significantly 
 
 Contrary, looking at \autoref{fig:MAPE}, the opposite is true. Here, \xgbr score much higher than all other models, which is the only metric that shows that pattern. However, in this figure, \xrf and \rfr get similar scores, while other models, apart from \xgbr, again have scores in the same range.
 
-\begin{figure}
+\begin{figure}[t]
     \centering
     \includegraphics[width=\linewidth]{report/img/MAPE.png}
     \caption{MAPE}
@@ -37,7 +36,7 @@ Contrary, looking at \autoref{fig:MAPE}, the opposite is true. Here, \xgbr score
 
 For the last of the distance metrics shown at \autoref{fig:max_error}, it is again clear that \xgbr is the best performing model, while \rfr and \xrf achieve scores within the same range. All other models achieve around the same poor results.
 
-\begin{figure}
+\begin{figure}[t]
     \centering
     \includegraphics[width=\linewidth]{report/img/Max_Error.png}
     \caption{Max Error}
@@ -46,7 +45,7 @@ For the last of the distance metrics shown at \autoref{fig:max_error}, it is aga
 
 Finally, R2 was included to give a better metric for explaining how much of the variance in the target variable is explained. Contrary to all other metrics, a high \RT score explains a model that fits the ground truth. With this knowledge, it is clear to see the same patterns observed previously. \xgbr achieves the highest score, while both \rfr and \xrf come close to the same result. 
 
-\begin{figure}
+\begin{figure}[t]
     \centering
     \includegraphics[width=\linewidth]{report/img/R2.png}
     \caption{R2}

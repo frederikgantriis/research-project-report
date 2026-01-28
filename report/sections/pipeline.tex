@@ -7,11 +7,11 @@ The project is structured in a data-centred pipeline. To achieve this, \textit{D
 The pipeline consist of the following steps:
 
 \begin{enumerate}
-    \item \textbf{Data Preparation}: The data given is merged and have an initial cleaning. The goal of this step, is to prepare the data for visualisations and transformations in later steps.
-    \item \textbf{Data analysis}: This steps has the sole purpose of analysing and visualising the raw data. This includes making a correlation analysis, generating descriptive statistics, and plotting the initial data.
-    \item \textbf{Preprocessing}: Here, the data is prepared for training and testing of all the different models. This includes, filling missing values, standardisation and splitting the dataset into the sections train and test. 
-    \item \textbf{Training}: In this step, the models are trained and validated. Each fold is measured with \textit{Root Mean Squared Error (RMSE)}.
-    \item \textbf{Evaluation}: The last step in the pipeline, is concerned testing the models, following by visualisation and evaluation of the results.
+    \item \textbf{Data Preparation}: The data given is merged and has an initial cleaning. The goal of this step is to prepare the data for visualisations and transformations in later steps.
+    \item \textbf{Data analysis}: This step has the sole purpose of analysing and visualising the raw data. This includes making a correlation analysis, generating descriptive statistics, and plotting the initial data.
+    \item \textbf{Preprocessing}: Here, the data is prepared for training and testing of all the different models. This includes filling missing values, standardisation and splitting the dataset into the sections train and test. 
+    \item \textbf{Training}: In this step, the models are trained and validated. Each fold is measured with \textit{Root Mean Squared Error (RMSE)} to get an indication of training progress during run-time.
+    \item \textbf{Evaluation}: The last step in the pipeline is concerned with testing the models, followed by visualisation and evaluation of the results.
 \end{enumerate}
 
-The structure of the pipeline enabled easy development and testing of different models. Consequently, DVC isolates all parameters into a single file along with an option to queue multiple experiments. As a results, hyper-parameter tuning was easy to structure and allowed experiments to be easily reproduce-able at any given point.
+The structure of the pipeline enabled easy development and testing of different models. Consequently, DVC isolates all parameters into a single file along with an option to queue multiple experiments. As a result, hyper-parameter tuning was easy to structure and allowed experiments to be easily reproducible at any given point.
